@@ -1,0 +1,16 @@
+.similar-scroll {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scrollbar-width: none;
+}
+
+.similar-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.similar-card-wrapper {
+  min-width: 160px;
+  flex-shrink: 0;
+}

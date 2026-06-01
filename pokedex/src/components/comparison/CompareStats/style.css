@@ -1,0 +1,63 @@
+.compare-stats-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.comp-stat-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.comp-stat-name {
+  width: 60px;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.comp-bar-left, .comp-bar-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.comp-bar-left {
+  flex-direction: row;
+}
+
+.comp-bar-right {
+  flex-direction: row;
+}
+
+.bar-bg {
+  flex: 1;
+  height: 8px;
+  background-color: var(--bg-secondary);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.comp-bar-left .bar-bg {
+  transform: rotate(180deg);
+}
+
+.bar {
+  height: 100%;
+  background-color: #ddd;
+  border-radius: 4px;
+}
+
+.bar.winner {
+  background-color: var(--primary-color);
+}
+
+.val {
+  font-size: 0.85rem;
+  font-weight: 600;
+  width: 25px;
+}
