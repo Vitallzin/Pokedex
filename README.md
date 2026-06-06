@@ -16,7 +16,7 @@ Aplicação Pokédex desenvolvida com React, TypeScript e Vite. O projeto consom
 
 ## Documentação DeepWiki
 
-**Documentação** [https://deepwiki.com/Vitallzin/lies-of-P-wiki](https://deepwiki.com/Vitallzin/Pokedex)]
+**Documentação** [https://deepwiki.com/Vitallzin/lies-of-P-wiki](https://deepwiki.com/Vitallzin/Pokedex)
 
 ## Visão geral do projeto
 
