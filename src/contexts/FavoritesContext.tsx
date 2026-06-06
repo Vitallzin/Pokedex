@@ -1,5 +1,5 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
-import { useAuth } from '../hooks/useAuth';
+import React, { createContext, useState, useContext } from 'react';
+import { useAuth } from './AuthContext';
 import { authService } from '../services/authService';
 import type { Pokemon } from '../types/pokemon';
 
@@ -23,16 +23,6 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     }
     return [];
   });
-
-  // Atualiza lista de favoritos quando usuário muda (login/logout)
-  useEffect(() => {
-    if (user) {
-      const saved = localStorage.getItem(`favorites_${user.id}`);
-      if (saved) setFavorites(JSON.parse(saved));
-    } else {
-      setFavorites([]);
-    }
-  }, [user]);
 
   // Adiciona ou remove um Pokémon dos favoritos com persistência local
   const toggleFavorite = (pokemon: Pokemon) => {
@@ -61,6 +51,7 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useFavorites = () => {
   const context = useContext(FavoritesContext);
   if (!context) throw new Error('useFavorites must be used within FavoritesProvider');

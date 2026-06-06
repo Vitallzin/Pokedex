@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'; // Importa tipos para garantir tipagem correta dos dados
 import type { Pokemon, EvolutionNode, PokemonDetail, PokemonSpecies } from '../types/pokemon';
 
 const BASE_URL = 'https://pokeapi.co/api/v2';

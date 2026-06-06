@@ -1,6 +1,6 @@
 import React from 'react';
 import { LogOut, User, Heart, Shield } from 'lucide-react';
-import { useAuth } from '../../../hooks/useAuth';
+import { useAuth } from '../../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import './style.css';
 

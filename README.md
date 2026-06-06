@@ -14,6 +14,10 @@ Aplicação Pokédex desenvolvida com React, TypeScript e Vite. O projeto consom
 - Capacitor Android
 - ESLint
 
+## Documentação DeepWiki
+
+**Documentação** [https://deepwiki.com/Vitallzin/lies-of-P-wiki](https://deepwiki.com/Vitallzin/Pokedex)
+
 ## Visão geral do projeto
 
 A aplicação está organizada em pages, components, contexts, services e utils.
@@ -92,8 +96,8 @@ Abstrai chamadas à PokéAPI.
 - `src/utils/formatPokemonId.ts` — formata IDs como `#001`.
 - `src/utils/calculateWeakness.ts` — calcula fraquezas combinadas para pokémons de um ou dois tipos.
 - `src/utils/compareStats.ts` — lógica de análise de batalha entre dois pokémons.
-- `src/data/typeAdvantages.ts` — tabela de efetividade entre tipos.
-- `src/data/pokemonTypes.ts` — lista de tipos, cores e traduções.
+- `src/utils/typeAdvantages.ts` — tabela de efetividade entre tipos.
+- `src/utils/typeColors.ts` — lista de tipos, cores e traduções.
 
 ## Pages
 
@@ -213,6 +217,16 @@ npm run lint
 - O `authService` é um mock simples que simula login e registro sem backend.
 - O projeto tem integração com Capacitor Android (`android/`) para builds mobile.
 
+## Arquitetura e Decisões de Projeto
+
+### Ausência da pasta `hooks`
+Diferente de grandes aplicações comerciais, este projeto acadêmico optou por **não utilizar uma pasta `hooks` separada**. 
+
+**Por que essa decisão?**
+- **Simplicidade:** Para um protótipo educacional, centralizar a lógica diretamente nos Contextos torna o fluxo de dados mais visível e fácil de explicar.
+- **Redução de Intermediários:** Ao exportar os hooks (como `useAuth`, `useFavorites`, etc.) diretamente de dentro dos arquivos de Contexto, eliminamos uma camada de abstração que poderia dificultar o entendimento imediato da aplicação.
+- **Foco na Funcionalidade:** A lógica de manipulação de estado, persistência no `localStorage` e integração com serviços está contida nos Providers, garantindo que os componentes consumam dados de forma direta e eficiente.
+
 ## Estrutura de pasta principal
 
 - `src/components` — componentes reutilizáveis e específicos.
@@ -220,7 +234,6 @@ npm run lint
 - `src/contexts` — estado global via React Context.
 - `src/services` — lógica de acesso a dados.
 - `src/utils` — funções auxiliares.
-- `src/data` — configurações de tipos e traduções.
 - `src/routes` — rotas da aplicação.
 
 ---

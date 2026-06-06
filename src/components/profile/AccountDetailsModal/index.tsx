@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth } from '../../../hooks/useAuth';
+import { useAuth } from '../../../contexts/AuthContext';
 import { Modal } from '../../common/Modal';
 import { Button } from '../../common/Button';
 import { Input } from '../../common/Input';
@@ -30,7 +30,7 @@ export const AccountDetailsModal: React.FC<AccountDetailsModalProps> = ({ isOpen
     try {
       await updateUser({ name, avatar });
       setSuccess('Perfil atualizado com sucesso!');
-    } catch (err) {
+    } catch {
       setError('Erro ao atualizar perfil.');
     }
   };

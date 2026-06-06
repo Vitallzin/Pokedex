@@ -1,5 +1,5 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
-import { useAuth } from '../hooks/useAuth';
+import React, { createContext, useState, useContext } from 'react';
+import { useAuth } from './AuthContext';
 import { authService } from '../services/authService';
 import type { Pokemon } from '../types/pokemon';
 
@@ -31,16 +31,6 @@ export const TeamProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
     return [];
   });
-
-  // Sincroniza times quando usuário muda (login/logout)
-  useEffect(() => {
-    if (user) {
-      const saved = localStorage.getItem(`teams_${user.id}`);
-      if (saved) setTeams(JSON.parse(saved));
-    } else {
-      setTeams([]);
-    }
-  }, [user]);
 
   // Cria novo time com ID único baseado em timestamp
   // Cria um novo time com ID único baseado em timestamp
@@ -96,6 +86,7 @@ export const TeamProvider: React.FC<{ children: React.ReactNode }> = ({ children
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTeam = () => {
   const context = useContext(TeamContext);
   if (!context) throw new Error('useTeam must be used within TeamProvider');

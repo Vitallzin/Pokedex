@@ -1,18 +1,39 @@
 import { BrowserRouter } from 'react-router-dom';
 import { MainLayout } from './components/layout/MainLayout';
 import { AppRoutes } from './routes/AppRoutes';
+import { ThemeProvider } from './contexts/ThemeContext';
+import { FavoritesProvider } from './contexts/FavoritesContext';
+import { TeamProvider } from './contexts/TeamContext';
+import { useAuth } from './contexts/AuthContext';
 import './styles/global.css';
 
-// Componente raiz da aplicação com roteamento e layout principal
-function App() {
+/**
+ * Componente interno que consome o contexto de autenticação para 
+ * injetar o ID do usuário como chave nos provedores dependentes.
+ * Isso garante que Favoritos e Times sejam resetados/recarregados 
+ * automaticamente quando o usuário mudar.
+ */
+function AppContent() {
+  const { user } = useAuth();
+
   return (
-    <BrowserRouter>
-      <MainLayout>
-        {/* Renderiza rotas definidas em AppRoutes */}
-        <AppRoutes />
-      </MainLayout>
-    </BrowserRouter>
+    <ThemeProvider>
+      <FavoritesProvider key={user?.id}>
+        <TeamProvider key={user?.id}>
+          <BrowserRouter>
+            <MainLayout>
+              <AppRoutes />
+            </MainLayout>
+          </BrowserRouter>
+        </TeamProvider>
+      </FavoritesProvider>
+    </ThemeProvider>
   );
+}
+
+// Componente raiz da aplicação
+function App() {
+  return <AppContent />;
 }
 
 export default App;

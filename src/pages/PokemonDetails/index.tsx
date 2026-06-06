@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { pokemonService } from '../../services/pokemonService';
 import { PokemonStats } from '../../components/pokemon/PokemonStats';
+import { PokemonWeakness } from '../../components/pokemon/PokemonWeakness';
 import { EvolutionChain } from '../../components/pokemon/EvolutionChain';
 import { SimilarPokemons } from '../../components/pokemon/SimilarPokemons';
 import { Loader } from '../../components/common/Loader';
-import { typeColors, translateType, translateAbility } from '../../data/pokemonTypes';
+import { typeColors, translateType, translateAbility } from '../../utils/typeColors';
+import { calculateWeaknesses } from '../../utils/calculateWeakness';
 import { formatPokemonId } from '../../utils/formatPokemonId';
 import { Heart, Plus, ChevronLeft } from 'lucide-react';
-import { useFavorites } from '../../hooks/useFavorites';
+import { useFavorites } from '../../contexts/FavoritesContext';
 import { useTeam } from '../../contexts/TeamContext';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../../contexts/AuthContext';
 import type { PokemonDetail, PokemonType, PokemonAbility, Pokemon } from '../../types/pokemon';
 
 import './style.css';
@@ -55,12 +57,12 @@ export const PokemonDetails: React.FC = () => {
     if (!isAuthenticated) return navigate('/login');
     toggleFavorite(pokemon as unknown as Pokemon);
   };
-// Adiciona pokemon ao time selecionado e fecha dropdown
+
+  // Adiciona pokemon ao time selecionado e fecha dropdown
   const handleAddToTeam = (teamId: string) => {
     addToTeam(teamId, pokemon as unknown as Pokemon);
     setShowTeamSelect(false);
   };
-
 
   return (
     <div className="pokemon-details-page">
@@ -142,6 +144,8 @@ export const PokemonDetails: React.FC = () => {
               </div>
             </div>
           </div>
+          
+          <PokemonWeakness weaknesses={calculateWeaknesses(pokemon.types.map(t => t.type.name))} />
         </section>
 
         <section className="stats-section">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { X, Settings, LogOut, User, Home, LogIn } from 'lucide-react';
-import { useAuth } from '../../../hooks/useAuth';
+import { useAuth } from '../../../contexts/AuthContext';
 import { AccountDetailsModal } from '../../profile/AccountDetailsModal';
 import { LogoutConfirmModal } from '../../profile/LogoutConfirmModal';
 import { Link } from 'react-router-dom';

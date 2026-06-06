@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth } from '../../../hooks/useAuth';
+import { useAuth } from '../../../contexts/AuthContext';
 import { Modal } from '../../common/Modal';
 import { Button } from '../../common/Button';
 import { Input } from '../../common/Input';
@@ -39,7 +39,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
         await login(email, password);
       }
       onClose();
-    } catch (err) {
+    } catch {
       setError(isRegister ? 'Erro ao criar conta.' : 'Credenciais inválidas.');
     }
   };

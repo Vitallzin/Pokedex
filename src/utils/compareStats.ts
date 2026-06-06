@@ -1,6 +1,6 @@
 // compareStats.ts
 import type { Pokemon } from '../types/pokemon';
-import { calculateEffectiveness } from '../data/typeAdvantages';
+import { calculateEffectiveness } from './typeAdvantages';
 
 // Busca valor de um stat específico do pokemon
 export function getStatValue(p: Pokemon, statName: string): number {
@@ -66,7 +66,7 @@ export function getBattleVerdict(p1: Pokemon, p2: Pokemon) {
   const analysis2 = calculateBattleMatchup(p2, p1);
 
   let winner: 'p1' | 'p2' | 'draw';
-  let reason = '';
+  let reason: string;
 
   // Critério 1: Quem mata mais rápido
   if (analysis1.turnsToKill < analysis2.turnsToKill) {
@@ -88,45 +88,6 @@ export function getBattleVerdict(p1: Pokemon, p2: Pokemon) {
   const lAn = winner === 'p1' ? analysis2 : analysis1;
 
   // Gera explicação textual baseada nos fatores da vitória
-  if (winner === 'draw') {
-    reason = `Ambos os Pokémon possuem um nível de força e tipos muito equilibrados, resultando em um duelo sem vantagem clara para nenhum dos lados.`;
-  } else {
-    const typeAdv = wAn.effectiveness > 1;
-    const typeDisadv = wAn.effectiveness < 1;
-    const faster = wAn.speed > lAn.speed;
-    const muchStronger = (lAn.turnsToKill / wAn.turnsToKill) > 1.5;
-
-    if (typeAdv && muchStronger) {
-      reason = `${w.name} domina o confronto pois possui vantagem de tipo e estatísticas muito superiores a ${l.name}.`;
-    } else if (typeAdv) {
-      reason = `A vantagem de tipo de ${w.name} é o fator decisivo para superar a resistência de ${l.name}.`;
-    } else if (typeDisadv && muchStronger) {
-      reason = `Apesar da desvantagem de tipo, o poder bruto e os status elevados de ${w.name} permitem que ele supere ${l.name}.`;
-    } else if (muchStronger) {
-      reason = `${w.name} vence este duelo devido à grande superioridade em seus status base em comparação a ${l.name}.`;
-    } else if (faster) {
-      reason = `Em um combate equilibrado, a maior velocidade de ${w.name} permite que ele ataque primeiro e garanta a vitória sobre ${l.name}.`;
-    } else {
-      reason = `${w.name} possui uma leve vantagem estratégica e estatística que o coloca à frente de ${l.name} nesta disputa.`;
-    }
-  }
-
-  return {
-    winner,
-    reason,
-    details: {
-      p1: analysis1,
-      p2: analysis2
-    }
-  };
-}
-  }
-
-  const w = winner === 'p1' ? p1 : p2;
-  const l = winner === 'p1' ? p2 : p1;
-  const wAn = winner === 'p1' ? analysis1 : analysis2;
-  const lAn = winner === 'p1' ? analysis2 : analysis1;
-
   if (winner === 'draw') {
     reason = `Ambos os Pokémon possuem um nível de força e tipos muito equilibrados, resultando em um duelo sem vantagem clara para nenhum dos lados.`;
   } else {

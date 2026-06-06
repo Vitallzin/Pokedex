@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Heart } from 'lucide-react';
 import { useFavorites } from '../../../contexts/FavoritesContext';
-import { typeColors } from '../../../data/pokemonTypes';
+import { typeColors } from '../../../utils/typeColors';
 import { formatPokemonId } from '../../../utils/formatPokemonId';
 import type { Pokemon, PokemonType } from '../../../types/pokemon';
 import './style.css';

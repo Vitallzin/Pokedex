@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Card } from '../../components/common/Card';
 import { Button } from '../../components/common/Button';
-import { useTheme } from '../../hooks/useTheme';
-import { useAuth } from '../../hooks/useAuth';
+import { useTheme } from '../../contexts/ThemeContext';
+import { useAuth } from '../../contexts/AuthContext';
 import { AccountDetailsModal } from '../../components/profile/AccountDetailsModal';
 import { LogoutConfirmModal } from '../../components/profile/LogoutConfirmModal';
 import { Moon, Sun, User, Bell, Shield, Info, LogOut, Users } from 'lucide-react';

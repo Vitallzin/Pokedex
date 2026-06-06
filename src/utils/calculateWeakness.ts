@@ -1,4 +1,4 @@
-import { typeAdvantages } from '../data/typeAdvantages';
+import { typeAdvantages } from './typeAdvantages';
 
 /**
  * Calcula tipos fracos contra um pokemon (tipos que fazem dano aumentado).

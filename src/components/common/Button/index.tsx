@@ -9,7 +9,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 // Componente de botão reutilizável com variantes, tamanhos e estado de loading
-export const Button: React.FC<ButtonProps> = ({
+export const Button: React.FC<ButtonProps> = ({ // exemplo de uso: <Button variant="primary" size="md" loading={true} icon={<SomeIcon />}>Clique aqui</Button>
   children,
   variant = 'primary',
   size = 'md',

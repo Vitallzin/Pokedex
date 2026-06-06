@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFavorites } from '../../hooks/useFavorites';
+import { useFavorites } from '../../contexts/FavoritesContext';
 import { PokemonCard } from '../../components/pokemon/PokemonCard';
 import './style.css';
 

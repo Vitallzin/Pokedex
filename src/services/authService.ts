@@ -28,6 +28,7 @@ export const authService = {
   },
 
   // Simula requisição de login com delay de 800ms
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   login: async (email: string, _password: string): Promise<User> => {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -53,6 +54,7 @@ export const authService = {
   },
 
   // Simula requisição de registro com delay de 800ms
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   register: async (name: string, email: string, _password: string): Promise<User> => {
     return new Promise((resolve) => {
       setTimeout(() => {

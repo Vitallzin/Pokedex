@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../../contexts/AuthContext';
 import { Button } from '../../components/common/Button';
 import { Input } from '../../components/common/Input';
 import { Card } from '../../components/common/Card';
@@ -36,7 +36,7 @@ export const Login: React.FC = () => {
       }
       // Redireciona para home após sucesso
       navigate('/');
-    } catch (err) {
+    } catch {
       setError(isRegister ? 'Erro ao criar conta. Tente novamente.' : 'Erro ao fazer login. Verifique suas credenciais.');
     }
   };

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Menu, User as UserIcon, ChevronDown } from 'lucide-react';
-import { useAuth } from '../../../hooks/useAuth';
+import { useAuth } from '../../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import { AccountMenu } from '../../profile/AccountMenu';
 import { AccountDetailsModal } from '../../profile/AccountDetailsModal';
