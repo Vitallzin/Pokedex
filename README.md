@@ -14,6 +14,10 @@ Aplicação Pokédex desenvolvida com React, TypeScript e Vite. O projeto consom
 - Capacitor Android
 - ESLint
 
+## Documentação DeepWiki
+
+**Documentação** [https://deepwiki.com/Vitallzin/lies-of-P-wiki](https://deepwiki.com/Vitallzin/Pokedex)]
+
 ## Visão geral do projeto
 
 A aplicação está organizada em pages, components, contexts, services e utils.
